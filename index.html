@@ -212,25 +212,41 @@
   }
   .period-row.is-now{
     border-color:var(--green);
-    background:linear-gradient(0deg, var(--green-soft), var(--card) 60%);
+    border-width:2px;
+    background:linear-gradient(135deg, var(--green-soft), var(--card) 55%);
+    animation:nowGlow 2.4s ease-in-out infinite;
+    transform:scale(1.015);
+  }
+  .period-row.is-now .p-subject{
+    color:var(--green);
   }
   .period-row.is-now::before{
-    content:"NOW";
+    content:"● LIVE NOW";
     position:absolute;
-    top:-8px; left:14px;
+    top:-10px; left:14px;
     background:var(--green);
     color:#fff;
     font-family:'JetBrains Mono', monospace;
     font-size:9.5px;
-    font-weight:600;
+    font-weight:700;
     letter-spacing:0.1em;
-    padding:2px 8px;
+    padding:3px 9px;
     border-radius:100px;
-    animation:pulseGlow 2.2s ease-in-out infinite;
+    box-shadow:0 2px 8px rgba(47,111,78,0.4);
   }
-  @keyframes pulseGlow{
-    0%,100%{ box-shadow:0 0 0 0 rgba(47,111,78,0.35); }
-    50%{ box-shadow:0 0 0 5px rgba(47,111,78,0); }
+  @keyframes nowGlow{
+    0%,100%{
+      box-shadow:
+        0 0 0 0 rgba(47,111,78,0.45),
+        0 4px 18px -4px rgba(47,111,78,0.35),
+        0 1px 0 rgba(35,32,26,0.04);
+    }
+    50%{
+      box-shadow:
+        0 0 0 9px rgba(47,111,78,0),
+        0 8px 28px -6px rgba(47,111,78,0.55),
+        0 1px 0 rgba(35,32,26,0.04);
+    }
   }
   .period-row.is-off{
     background:var(--red-soft);
@@ -412,14 +428,8 @@
 <div class="wrap">
 
   <header>
-    <div class="stamp">Devi Secondary School · Birtamod-5, Jhapa</div>
     <p class="school-name">Daily Routine of Class XII (Science) — Effective from 1st Ashad 2083</p>
     <h1>Class 12 <em>'C'</em> Routine</h1>
-    <div class="meta-row">
-      <span>📍 <b>Section:</b> C</span>
-      <span>🗓️ <b>Days:</b> Sunday – Friday</span>
-      <span>♻️ <b>Change date:</b> 2083/03/01</span>
-    </div>
   </header>
 
   <div class="view-toggle">
