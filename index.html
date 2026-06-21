@@ -211,14 +211,34 @@
     transition:transform .15s ease, box-shadow .15s ease;
   }
   .period-row.is-now{
-    border-color:var(--green);
-    border-width:2px;
-    background:linear-gradient(135deg, var(--green-soft), var(--card) 55%);
-    animation:nowGlow 2.4s ease-in-out infinite;
+    position:relative;
+    border:1px solid rgba(47,111,78,0.35);
+    border-radius:14px;
+    background:var(--card);
     transform:scale(1.015);
+    animation: breatheGlow 3.2s ease-in-out infinite;
   }
   .period-row.is-now .p-subject{
     color:var(--green);
+  }
+  /* Apple-style ambient glow: soft, layered, blurred shadows that gently
+     breathe in and out — no hard edges, no travelling line, just a calm
+     luminous halo around the whole card. */
+  @keyframes breatheGlow{
+    0%, 100%{
+      box-shadow:
+        0 0 0 1px rgba(47,111,78,0.12),
+        0 0 16px 2px rgba(47,111,78,0.20),
+        0 0 36px 6px rgba(47,111,78,0.14),
+        0 6px 20px -8px rgba(47,111,78,0.30);
+    }
+    50%{
+      box-shadow:
+        0 0 0 1px rgba(47,111,78,0.22),
+        0 0 26px 6px rgba(47,111,78,0.38),
+        0 0 56px 14px rgba(47,111,78,0.22),
+        0 10px 28px -8px rgba(47,111,78,0.40);
+    }
   }
   .period-row.is-now::before{
     content:"● LIVE NOW";
@@ -233,20 +253,7 @@
     padding:3px 9px;
     border-radius:100px;
     box-shadow:0 2px 8px rgba(47,111,78,0.4);
-  }
-  @keyframes nowGlow{
-    0%,100%{
-      box-shadow:
-        0 0 0 0 rgba(47,111,78,0.45),
-        0 4px 18px -4px rgba(47,111,78,0.35),
-        0 1px 0 rgba(35,32,26,0.04);
-    }
-    50%{
-      box-shadow:
-        0 0 0 9px rgba(47,111,78,0),
-        0 8px 28px -6px rgba(47,111,78,0.55),
-        0 1px 0 rgba(35,32,26,0.04);
-    }
+    z-index:3;
   }
   .period-row.is-off{
     background:var(--red-soft);
